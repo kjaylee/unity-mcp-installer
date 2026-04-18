@@ -1,0 +1,73 @@
+# [PROJECT NAME] — Claude Code Context
+
+> This file is auto-loaded by Claude Code at session start.
+> Keep it lean and up-to-date. Remove sections you don't use.
+
+## Environment
+
+- Unity version: <!-- e.g. 6000.0.23f1 -->
+- Render pipeline: <!-- URP / HDRP / Built-in -->
+- Target platforms: <!-- iOS, Android, PC, WebGL -->
+- C# language version: <!-- e.g. C# 9 / nullable enabled -->
+
+## Architecture (edit to match your project)
+
+<!--
+  Remove or replace this section with your actual conventions.
+  Do NOT keep example patterns you aren't using — the AI will
+  follow them literally.
+-->
+
+- Dependency Injection: <!-- VContainer / Zenject / none -->
+- Event system: <!-- SignalBus / UnityEvents / custom -->
+- Async: <!-- UniTask / coroutines / Task -->
+- State management: <!-- ScriptableObject / Redux / custom -->
+
+## Coding Conventions
+
+- Access modifiers always explicit (public/private/internal/protected)
+- `[SerializeField] private` over public fields
+- PascalCase for types/methods/properties, camelCase for locals/params
+- <!-- Add project-specific rules here -->
+
+## Patterns We Avoid
+
+<!--
+  List patterns the AI should NOT generate. This is often more
+  effective than listing what to do.
+-->
+
+- <!-- e.g. Find() / FindObjectOfType() runtime calls -->
+- <!-- e.g. Resources.Load() — use Addressables -->
+
+## Folder Layout
+
+```
+Assets/
+  Scripts/
+  Prefabs/
+  Scenes/
+  ScriptableObjects/
+```
+
+## Package Dependencies
+
+<!-- Paste from Packages/manifest.json or list the relevant ones -->
+
+## Current Work
+
+<!-- Update this each session so Claude knows what we're actively doing -->
+
+- [ ]
+- [ ]
+
+## Known Issues / Gotchas
+
+<!-- Things the AI should remember but aren't obvious from code -->
+
+-
+
+---
+
+_Tip: add `# Do not read this file` at the top temporarily if you want_
+_Claude Code to skip this context (e.g. for clean refactors)._

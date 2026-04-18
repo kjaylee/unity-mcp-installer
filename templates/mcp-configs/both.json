@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "unity-coplay": {
+      "command": "node",
+      "args": ["{{COPLAY_ENTRY}}"]
+    },
+    "unity-ivanmurzak": {
+      "command": "{{IVAN_BIN}}",
+      "args": [
+        "--port=8080",
+        "--plugin-timeout=10000",
+        "--client-transport=stdio"
+      ]
+    }
+  }
+}

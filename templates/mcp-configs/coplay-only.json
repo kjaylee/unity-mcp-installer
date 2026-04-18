@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "unity-coplay": {
+      "command": "node",
+      "args": ["{{COPLAY_ENTRY}}"]
+    }
+  }
+}

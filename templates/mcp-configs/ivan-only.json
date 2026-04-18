@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "unity-ivanmurzak": {
+      "command": "{{IVAN_BIN}}",
+      "args": [
+        "--port=8080",
+        "--plugin-timeout=10000",
+        "--client-transport=stdio"
+      ]
+    }
+  }
+}

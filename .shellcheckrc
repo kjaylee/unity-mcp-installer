@@ -1,0 +1,16 @@
+# ShellCheck configuration
+# https://www.shellcheck.net/wiki/Ignore
+
+# SC1091: sourced file not followed (path is relative/dynamic in our helpers)
+disable=SC1091
+
+# SC2250: optional style check - braces around variables even when not needed.
+disable=SC2250
+
+# SC2312: "Consider invoking separately to avoid masking return value" —
+# would require rewriting many `cmd || echo '?'` fallbacks for no real gain.
+disable=SC2312
+
+# Keep these on — they catch real bugs:
+# SC2154 (unassigned), SC2086 (unquoted), SC2015 (A&&B||C),
+# SC2164 (cd without check), etc.

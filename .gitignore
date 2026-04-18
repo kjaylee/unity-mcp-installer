@@ -1,0 +1,17 @@
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+install-*.log
+
+# Local testing
+/tmp-test/
+/.test-project/
+
+# Nothing in scripts should be generated, but just in case
+node_modules/

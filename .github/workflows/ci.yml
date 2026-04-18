@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y shellcheck
+          shellcheck --version
+
+      - name: Run ShellCheck
+        run: |
+          shellcheck --shell=bash --external-sources \
+            scripts/install.sh \
+            scripts/uninstall.sh \
+            scripts/doctor.sh \
+            scripts/lib/common.sh
+
+  dry-run-macos:
+    name: Dry-run (macOS)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check scripts are executable
+        run: |
+          test -x scripts/install.sh
+          test -x scripts/uninstall.sh
+          test -x scripts/doctor.sh
+
+      - name: Run doctor
+        run: bash scripts/doctor.sh || true  # doctor exits non-zero if gaps; that's fine on a clean runner
+
+      - name: Dry-run install (no-coplay, no-ivan)
+        env:
+          ASSUME_YES: 1
+        run: |
+          bash scripts/install.sh --dry-run --no-coplay --no-ivan -y || true
+
+  dry-run-linux:
+    name: Dry-run (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check scripts are executable
+        run: |
+          test -x scripts/install.sh
+          test -x scripts/uninstall.sh
+          test -x scripts/doctor.sh
+
+      - name: Run doctor
+        run: bash scripts/doctor.sh || true
+
+  template-validity:
+    name: JSON template validity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON templates (after placeholder substitution)
+        run: |
+          set -e
+          sudo apt-get update -qq && sudo apt-get install -y jq
+          for f in templates/mcp-configs/*.json; do
+            echo "Checking $f"
+            sed \
+              -e 's|{{COPLAY_ENTRY}}|/tmp/test.js|g' \
+              -e 's|{{IVAN_BIN}}|/tmp/test-bin|g' \
+              "$f" | jq empty
+          done
+          echo "All templates valid."
