@@ -33,7 +33,7 @@ Unity-side steps (package install, server start, Skills generation) stay manual 
 ## Quick start
 
 ```bash
-git clone https://github.com/<owner>/unity-mcp-installer.git
+git clone https://github.com/kjaylee/unity-mcp-installer.git
 cd unity-mcp-installer
 
 # Interactive
